@@ -1,0 +1,128 @@
+spring:
+  profiles:
+    active: default
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+---
+server:
+  port: 8761
+  shutdown: graceful
+
+spring:
+  application:
+    name: service-discovery
+  config:
+    activate:
+      on-profile: default
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+---
+
+server:
+  port: 8761
+  shutdown: graceful
+
+spring:
+  application:
+    name: service-discovery
+  config:
+    activate:
+      on-profile: instance-1
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+---
+
+server:
+  port: 8762
+  shutdown: graceful
+
+spring:
+  application:
+    name: service-discovery
+  config:
+    activate:
+      on-profile: instance-2
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+---
+
+server:
+  port: 8763
+  shutdown: graceful
+
+spring:
+  application:
+    name: service-discovery
+  config:
+    activate:
+      on-profile: instance-3
+
+eureka:
+  instance:
+    hostname: 103.191.179.38
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://103.191.179.38:8761/eureka/
+
+---
+
+server:
+  port: 8761
+  shutdown: graceful
+
+spring:
+  application:
+    name: service-discovery
+  config:
+    activate:
+      on-profile: uat
+
+eureka:
+  instance:
+    hostname: 103.191.179.38
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://103.191.179.38:8761/eureka/
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
