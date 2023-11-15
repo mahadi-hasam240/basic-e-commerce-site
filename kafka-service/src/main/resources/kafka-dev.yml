@@ -4,6 +4,6 @@ bs:
     consumer:
       group-id: user
     topic:
-      user-sign-up: customerSignUpTopic
-      user-activity-log: customerActivityLogTopic
+      user-sign-up: userSignUpTopic
+      user-activity-log: userActivityLogTopic
 
