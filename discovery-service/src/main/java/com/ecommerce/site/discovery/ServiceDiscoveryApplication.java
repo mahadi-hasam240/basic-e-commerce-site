@@ -1,4 +1,4 @@
-package com.brainstation23.discovery;
+package com.ecommerce.site.discovery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
