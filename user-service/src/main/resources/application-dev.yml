@@ -7,11 +7,11 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 
 spring:
-#  config:
-#    import: kafka-dev.yml
-#  sleuth:
-#    sampler:
-#      probability: 1.0
+  config:
+    import: kafka-dev.yml
+  sleuth:
+    sampler:
+      probability: 1.0
   datasource:
     url: jdbc:postgresql://localhost:5432/ecommerce_db?currentSchema=user
     username: postgres
