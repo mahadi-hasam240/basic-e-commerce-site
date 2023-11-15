@@ -1,0 +1,92 @@
+server:
+  port: 8089
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+#  config:
+#    import: kafka-dev.yml
+#  sleuth:
+#    sampler:
+#      probability: 1.0
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecommerce_db?currentSchema=user
+    username: postgres
+    password: root
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password:
+  pool:
+    max:
+      connection: 30
+      idle:
+        connection: 10
+    min:
+      idle:
+        connection: 0
+
+
+
+
+password:
+  strength: 4
+
+jwt:
+  token:
+    prefix: Bearer
+  expiry:
+    minute: 30
+  secret:
+    key: 327234753778214125442A472D4B6150645367566B59703373367638792F423F
+
+
+feign:
+  httpclient:
+    max-connections: 200
+    max-connections-per-route: 200
+  client:
+    config:
+      default:
+        connectTimeout: 120000
+        readTimeout: 60000
+        requestIntreceptors:
+          - com.ecommerce.site.user.rest.interceptor.FeignClientRequestInterceptor
+
+logging:
+  config: classpath:log/logback-dev.xml
+  hibernate:
+    ddl-auto: update
+
+
+
+service:
+  transaction-pin:
+    impl: real
+
+two:
+  factor:
+    auth:
+      feign: real
+
+user:
+  password:
+    length: 4
+    consecutive:
+      digit: 01234567890
+  temporary-password:
+    validity:
+      minutes: 30
+
+wallet:
+  gateway:
+    url: http://localhost:8000
+
+instant:
+  notification:
+    expiry:
+      minute: 10

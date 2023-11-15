@@ -1,0 +1,80 @@
+
+server:
+  port: 0
+  shutdown: graceful
+
+log:
+  dir: user
+
+redis:
+  database:
+    index: 1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+info:
+  app:
+    name: User Service
+    description: This service is responsible for registering users.
+    version: 1.0
+
+eureka:
+  instance:
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 10
+    instance-id: ${spring.application.name}:${random.value}
+  client:
+    fetch-registry: true
+    registry-fetch-interval-seconds: 3
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: user-service
+  lifecycle:
+    timeout-per-shutdown-phase: "90s"
+  datasource:
+    hikari:
+      maximum-pool-size: 9
+  jpa:
+    database-platform: postgres
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
+
+http:
+  header:
+    auth: Authorization
+    language: Accept-Language
+    userType: User-Type
+
+jwt:
+  token:
+    prefix: Bearer
+    expiry:
+      minute: 30
+
+  secret:
+    key: 327234753778214125442A472D4B6150645367566B59703373367638792F423F
+
