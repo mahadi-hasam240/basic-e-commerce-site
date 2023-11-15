@@ -7,6 +7,9 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 
 spring:
+  cloud:
+    compatibility-verifier:
+      enabled: false
   config:
     import:
       - kafka-dev.yml

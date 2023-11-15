@@ -4,6 +4,8 @@ bs:
     consumer:
       group-id: user
     topic:
+      notification: notificationTopic
       user-sign-up: userSignUpTopic
       user-activity-log: userActivityLogTopic
+      template-value: templateValueTopic
 

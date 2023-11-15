@@ -51,7 +51,7 @@ spring:
   jpa:
     database-platform: postgres
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
     open-in-view: false
     properties:
