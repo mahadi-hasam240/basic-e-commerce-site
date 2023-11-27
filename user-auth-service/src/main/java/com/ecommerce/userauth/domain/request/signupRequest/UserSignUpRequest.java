@@ -6,9 +6,11 @@ import lombok.Getter;
 import lombok.Setter;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
-public class UserSignUpRequest extends SignupBaseRequest{
+public class UserSignUpRequest implements Serializable {
     @NotNull
     @JsonSerialize(using = SensitiveDataSerializer.class)
     private String password;

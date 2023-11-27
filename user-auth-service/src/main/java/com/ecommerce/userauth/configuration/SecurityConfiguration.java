@@ -47,8 +47,8 @@ public class SecurityConfiguration {
         return new String[]{
                 "/",
                 "/api/v1/forgot/password/**",
-                "/api/v1/customer-auth/**",
-                "/api/v1/customer-auth/biometric/authentication",
+                "/api/v1/user-auth/**",
+                "/api/v1/user-auth/biometric/authentication",
                 "/v3/api-docs/**",
                 "/swagger-ui.html",
                 "/swagger-ui/**",
@@ -56,7 +56,7 @@ public class SecurityConfiguration {
                 "/configuration/security",
                 "/swagger-resources/**",
                 "/webjars/**",
-                "/api/v1/customer-auth/signup/**",
+                "/api/v1/user-auth/signup/**",
         };
     }
 
